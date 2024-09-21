@@ -1,0 +1,10 @@
+@import "primeicons/primeicons.css";
+:root{
+    --color1: white;
+    --color2: white;
+    --color3: #16d4ae;
+}
+
+body{
+    background-color: black;
+}
