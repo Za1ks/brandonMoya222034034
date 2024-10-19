@@ -1,0 +1,29 @@
+<form class="formulario">
+    <p-card header="Register" [style]="{width: '360px'}">
+      <div>
+        <label>FullName</label>
+        <br>
+        <input type="text" placeholder="Type your name" />
+      </div>
+      <div>
+        <br>
+        <label>Email</label>
+        <br>
+        <input id="Email" placeholder="Type your Email" />
+        <br><br>
+        <label>Password</label>
+        <br>
+        <input id="Password" type="password" placeholder="Type your password"/>
+        <br><br>
+        <label>Confirm Password</label>
+        <br>
+        <input id="CPassword" type="password" placeholder="Confirm your password"/>
+      </div>
+      <br>
+      <p-button class="but" label="Register" iconPos="right"></p-button>
+      <br>
+      <br>
+      <label>Already a member?</label>
+      <label (click)="redirectToLogin()" style="cursor: pointer; color: blue; text-decoration: underline;"> Login</label>
+    </p-card>
+  </form>
