@@ -1,22 +1,29 @@
-<form class="formulario">
+<div class="p-fluid">
+  <form class="formulario" [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <p-card header="Login" [style]="{width: '360px'}">
       <div>
-        <label for="username">Email</label>
+        <label for="email">Email</label>
         <br>
-        <input type="text" id="Email" placeholder="Type your Email" />
+        <input id="email" type="email" pInputText formControlName="email" placeholder="Type your Email" />
+        <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="error">
+          Correo no válido
+        </div>
       </div>
       <div>
         <br>
         <label for="password">Password</label>
         <br>
-        <input type="password" id="password" placeholder="Type your Password" />
+        <input id="password" type="password" pPassword formControlName="password" placeholder="Type Your Password"/>
+        <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="error">
+          La Contraseña es requerida
+        </div>
       </div>
       <br>
-      <p-button class="but" label="SIGN IN" iconPos="right"></p-button>
+      <button label="SIGN IN" iconPos="right"  pButton type="submit" [disabled]="userForm.invalid"></button>
       <br>
       <br>
       <label>Not a member?</label>
       <label (click)="redirectToRegister()" style="cursor: pointer; color: blue; text-decoration: underline;"> Register</label>
     </p-card>
   </form>
-  
+</div>

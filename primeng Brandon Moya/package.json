@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/router": "^18.2.9",
+    "primeng": "^17.18.11"
+  }
+}

@@ -1,29 +1,43 @@
-<form class="formulario">
+<div class="p-fluid">
+  <form class="formulario" [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <p-card header="Register" [style]="{width: '360px'}">
       <div>
-        <label>FullName</label>
+        <label for="name">FullName</label>
         <br>
-        <input type="text" placeholder="Type your name" />
+        <input id="name" type="text" pInputText formControlName="name" placeholder="Type your name" />
+        <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="error">
+          El nombre es requerido
+        </div>
       </div>
       <div>
         <br>
-        <label>Email</label>
+        <label for="email">Email</label>
         <br>
-        <input id="Email" placeholder="Type your Email" />
+        <input id="Email" placeholder="Type your Email" type="email" pInputText formControlName="email"/>
+        <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="error">
+          Correo no válido
+        </div>
         <br><br>
-        <label>Password</label>
+        <label for="password">Password</label>
         <br>
-        <input id="Password" type="password" placeholder="Type your password"/>
-        <br><br>
-        <label>Confirm Password</label>
+        <input id="Password" type="password" placeholder="Type your password" type="password" pPassword formControlName="password"/>
+        <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="error">
+          La contraseña debe tener al menos 6 caracteres
+        </div>
         <br>
-        <input id="CPassword" type="password" placeholder="Confirm your password"/>
+        <br>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" pPassword placeholder="Confirm Your Password" />
+        <div *ngIf="userForm.errors?.mismatch && userForm.controls['confirmPassword'].touched" class="error">
+          Las contraseñas no coinciden
+        </div>
       </div>
       <br>
-      <p-button class="but" label="Register" iconPos="right"></p-button>
+      <button pButton type="submit" label="Register"[disabled]="userForm.invalid" iconPos="right"></button>
       <br>
       <br>
       <label>Already a member?</label>
       <label (click)="redirectToLogin()" style="cursor: pointer; color: blue; text-decoration: underline;"> Login</label>
     </p-card>
   </form>
+</div>
